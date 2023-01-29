@@ -1,12 +1,12 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Socket from '../pages/socketIO';
+import SocketIO from '../pages/socketIO';
 
 const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Socket />} />
+        <Route path="/" element={<SocketIO />} />
       </Routes>
     </BrowserRouter>
   );
