@@ -1,7 +1,5 @@
 // socket.io
 const { Server } = require('socket.io');
-// cors
-const cors = require('cors');
 
 module.exports = (server) => {
   const io = new Server(server, {
