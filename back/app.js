@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const port = 8080;
@@ -5,10 +6,16 @@ const port = 8080;
 const cors = require('cors');
 // routes
 const indexRouter = require('./routes');
-/*********************************************
+/***********************************************
  * 1. SocketIO: 모듈화 해놓은 socket_server를 불러온다.
- *********************************************/
+ ***********************************************/
 const SocketIO = require('./socket');
+
+/************
+ * 몽고DB 연결
+ ************/
+const connect = require('./schemas');
+connect();
 
 app.use('/', indexRouter);
 

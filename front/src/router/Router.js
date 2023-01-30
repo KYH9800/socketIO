@@ -1,12 +1,14 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import SocketIO from '../pages/socketIO';
+import Room from '../pages/room';
+import Chat from '../pages/chat';
 
 const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<SocketIO />} />
+        <Route path="/room" element={<Room />} />
+        <Route path="/chat" element={<Chat />} />
       </Routes>
     </BrowserRouter>
   );

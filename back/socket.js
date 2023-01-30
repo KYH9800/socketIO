@@ -15,7 +15,10 @@ module.exports = (server) => {
     path: '/socket.io',
   });
 
-  io.on('connection', (socket) => {
+  const room = io.of('/room');
+  const chat = io.of('/chat');
+
+  chat.on('connection', (socket) => {
     const req = socket.request;
     /************************************************************************
      * IP 파악
@@ -39,12 +42,11 @@ module.exports = (server) => {
      **********************************************/
     socket.on('new_message', (msg) => {
       console.log('msg: ', msg);
-      console.log('socket.id: ', socket.id);
       /*******************************************************************
        * socket.id: 고유의 socket ID를 통해 User를 구분하고 어떠한 작업을 할 수 있다.
        * 강퇴, 어떤 채팅방에 있는지 확인... 등등
        *******************************************************************/
-      io.emit('new_message', msg);
+      chat.emit('new_message', msg);
     });
 
     socket.on('reply', (data) => {
